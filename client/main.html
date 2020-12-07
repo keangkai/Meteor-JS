@@ -1,0 +1,35 @@
+<head>
+  <title>images</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+  {{> loginButtons}}
+  <hr />
+  {{#if currentUser}}
+  {{> chat}}
+  {{else}}
+    <p>Please Log in / register</p>
+  {{/if}}
+</body>
+
+<template name="chat">
+  {{#each messages}}
+    <p><b>{{getUsername userId}}</b>({{formatDate createdAt}}): {{text}}</p>
+  {{else}}
+    <p>No messages.</p>
+  {{/each}}
+  <form id="chat-form">
+    <p>
+      <textarea
+        rows="6"
+        cols="40"
+        name="text"
+        placeholder="write a message"
+      >
+      </textarea>
+    </p>
+    <p><input type="submit" value="Send" /></p>
+  </form>
+</template>
+
